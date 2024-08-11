@@ -1,11 +1,13 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 // Welcome route
 Route::get('/', function () {
@@ -65,6 +67,7 @@ Route::resource('users', UserController::class);
 
 // Report route
 Route::resource('stores.reports', ReportController::class);
+Route::get('/stores/{store}/reports', [ReportController::class, 'index'])->name('stores.reports.index');
 
 // Password reset routes (if needed)
 // Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');

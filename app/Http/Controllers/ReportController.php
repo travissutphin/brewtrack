@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    public function index(Store $store)
-    {
-        $reports = $store->reports;
-        return view('reports.index', compact('store', 'reports'));
-    }
+	public function index(Store $store)
+	{
+		$reports = $store->reports()
+						 ->latest()  // This will order by created_at desc
+						 ->paginate(15);  // Adjust the number as needed
+		return view('reports.index', compact('store', 'reports'));
+	}
 
     public function create(Store $store)
     {

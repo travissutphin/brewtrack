@@ -1,3 +1,4 @@
+<?php /* URI: /stores/2/ */  ?>
 @extends('layouts.app')
 
 @section('content')
@@ -19,7 +20,7 @@
             </div>
         </div>
 
-        <hr class="border border-danger border-2">
+        <hr class="border">
 
         <div class="row">
             <div class="col-md-6 mb-6">
@@ -47,7 +48,7 @@
             </div>
         </div>
 
-        <hr class="border border-danger border-2">
+        <hr class="border">
 
         <h2 class="mt-4">Last 9 Reports</h2>
 
@@ -89,11 +90,10 @@
 
         <a href="{{ route('stores.index') }}" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left"></i> Back to Stores</a>
 
-        <hr class="border border-danger border-2">
-        <hr class="border border-danger border-2">
-        <hr class="border border-danger border-2">
+		<hr class="border">
 
-        <h2>Reports</h2>
+        <?php /*
+		<h2>Reports</h2>
         <div class="col-md-4 mb-4">
             <div class="card card-outline-red">
                 <div class="card-body">
@@ -117,6 +117,7 @@
                 </div>
             </div>
         </div>
-
+		*/ ?>
+		
     </div>
 @endsection
