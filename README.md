@@ -1,4 +1,4 @@
-# thoriumCMS
+# thoriumCMS Alpha V1.0
 # 🍺 Brew:Track - Your Ultimate Beverage Merchandising Solution
 
 ## 🌟 Introduction
@@ -11,8 +11,8 @@ Welcome to **Brew:Track**, the cutting-edge web application designed to revoluti
 
 - **Store Management**: Easily add, edit, and manage store information.
 - **Product Tracking**: Keep tabs on product placement, stock levels, and pricing accuracy.
-- **Check-In/Out System**: Track merchandiser visits with precise timing.
-- **Photo Documentation**: Capture and store photos of beverage displays for visual reference.
+- **Check-In/Out System**: Track merchandiser visits with precise timing. (Coming Soon)
+- **Photo Documentation**: Capture and store photos of beverage displays for visual reference. (Coming Soon)
 - **User Roles**: Admin and user roles for tailored access and functionality.
 - **Responsive Design**: Access Brew:Track on any device, from desktop to mobile.
 
@@ -27,7 +27,7 @@ Welcome to **Brew:Track**, the cutting-edge web application designed to revoluti
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/brew-track.git
+   git clone https://github.com/travissutphin/brewtrack.git
    ```
 2. Navigate to the project directory:
    ```
