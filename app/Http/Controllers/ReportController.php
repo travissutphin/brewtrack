@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ReportController extends Controller
 {
@@ -23,20 +24,34 @@ class ReportController extends Controller
 
     public function store(Request $request, Store $store)
     {
-        $validatedData = $request->validate([
-            'sku' => 'required|string',
-            'name' => 'required|string',
-            'shelf_position' => 'required|string',
-            'facing' => 'required|integer',
-            'stock_level' => 'required|integer',
-            'out_of_stock' => 'nullable|boolean',
-            'price_accuracy' => 'nullable|boolean',
-            'user_id' => 'required|exists:users,id',
-        ]);
+		$validatedData = $request->validate([
+			'notes_manager' => 'nullable|string',
+			'shelf_position' => 'required|string',
+			'facing' => 'required|string',
+			'stock_level' => 'required|string',
+			'out_of_stock' => 'nullable|string',
+			'price_accuracy' => 'nullable|string',
+			'status' => 'required|in:open,pending,closed',
+			'check_in' => 'nullable|date',
+			'check_out' => 'nullable|date|after:check_in',
+		]);
 
-        $store->reports()->create($validatedData);
+		// Convert check_in time to UTC
+		if ($request->has('check_in')) {
+			$validatedData['check_in'] = Carbon::parse($request->check_in)->utc();
+		} else {
+			$validatedData['check_in'] = Carbon::now()->utc();
+		}
 
-        return redirect()->route('stores.reports.index', $store)->with('success', 'Report created successfully.');
+		// Convert check_out time to UTC if provided
+        if ($request->has('check_out')) {
+            $validatedData['check_out'] = Carbon::parse($request->check_out)->utc();
+        }
+		
+		$validatedData['user_id'] = auth()->id();
+		$store->reports()->create($validatedData);
+
+		return redirect()->route('stores.reports.index', $store)->with('success', 'Report created successfully.');
     }
 
     public function show(Store $store, Report $report)
@@ -51,21 +66,34 @@ class ReportController extends Controller
 
     public function update(Request $request, Store $store, Report $report)
     {
-        $validatedData = $request->validate([
-            'sku' => 'required|string',
-            'name' => 'required|string',
-            'shelf_position' => 'required|string',
-            'facing' => 'required|integer',
-            'stock_level' => 'required|integer',
-            'out_of_stock' => 'nullable|boolean',
-            'price_accuracy' => 'nullable|boolean',
-            'user_id' => 'required|exists:users,id',
-        ]);
+		$validatedData = $request->validate([
+			'notes_manager' => 'nullable|string',
+			'shelf_position' => 'required|string',
+			'facing' => 'required|string',
+			'stock_level' => 'required|string',
+			'out_of_stock' => 'nullable|string',
+			'price_accuracy' => 'nullable|string',
+			'status' => 'required|in:open,pending,closed',
+			'check_in' => 'nullable|date',
+			'check_out' => 'nullable|date|after:check_in',
+		]);
 
-        $report->update($validatedData);
+		// Convert check_in time to UTC
+		if ($request->has('check_in')) {
+			$validatedData['check_in'] = Carbon::parse($request->check_in)->utc();
+		} else {
+			$validatedData['check_in'] = Carbon::now()->utc();
+		}
 
-        return redirect()->route('stores.reports.index', $store)->with('success', 'Report updated successfully.');
-    }
+		// Convert check_out time to UTC if provided
+        if ($request->has('check_out')) {
+            $validatedData['check_out'] = Carbon::parse($request->check_out)->utc();
+        }
+		
+		$report->update($validatedData);
+
+		return redirect()->route('stores.reports.index', $store)->with('success', 'Report updated successfully.');
+	}
 
 	public function checkIn(Store $store, Report $report)
 	{

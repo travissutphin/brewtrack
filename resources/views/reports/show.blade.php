@@ -11,12 +11,8 @@
 					<td>{{ ucfirst($report->status) }}</td>
 				</tr>
 				<tr>
-                    <th>SKU/UPS</th>
-                    <td>{{ $report->sku }}</td>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <td>{{ $report->name }}</td>
+                    <th>Manager Notes</th>
+                    <td>{{ $report->notes_manager }}</td>
                 </tr>
                 <tr>
                     <th>Shelf Position</th>
@@ -39,8 +35,16 @@
                     <td>{{ $report->price_accuracy ? 'Yes' : 'No' }}</td>
                 </tr>
                 <tr>
+                    <th>Check In</th>
+                    <td>{{ $report->check_in }}</td>
+                </tr>
+                <tr>
+                    <th>Check Out</th>
+                    <td>{{ $report->check_out }}</td>
+                </tr>
+				<tr>
                     <th>User ID</th>
-                    <td>{{ $report->user_id }}</td>
+                    <td>{{ $report->user->name }}</td>
                 </tr>
             </tbody>
         </table>

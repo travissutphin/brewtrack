@@ -2,6 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     @if (session('success'))
         <div id="success-alert" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
@@ -11,7 +12,7 @@
 
     <div class="row align-items-center mt-3">
         <div class="col">
-            <h1>All Reports for: {{ $store->store_name }}</h1>
+            <h1>All Reports: {{ $store->store_name }}</h1>
         </div>
         <div class="col-auto ms-auto">
             <a href="{{ route('stores.reports.create', $store) }}" class="btn btn-primary mb-3"><i class="bi bi-plus"></i> Create New Report</a>
@@ -35,17 +36,16 @@
 
     <div class="row">
         @forelse ($reports as $report)
-            <div class="col-md-4 mb-4">
+			<div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-header card-background-dark text-black">
-                        <h5 class="mb-0">{{ $report->name }}</h5>
-						<small>{{ $report->created_at->format('M/d/Y h:i A') }}</small>
+                        <h5 class="mb-0">{{ $report->created_at->format('M/d/Y h:i A') }}</h5>
                     </div>
                     <div class="card-body">
                         <p class="card-text"><strong>Status:</strong> {{ ucfirst($report->status) }}</p>
-                        <p class="card-text"><strong>SKU/UPS:</strong> {{ $report->sku }}</p>
-                        <p class="card-text"><strong>Stock Level:</strong> {{ $report->stock_level }}</p>
-                        <p class="card-text"><strong>Out of Stock:</strong> {{ $report->out_of_stock ? 'Yes' : 'No' }}</p>
+						<p class="card-text"><strong>Merchandiser:</strong> {{ $report->user->name }}</p>
+                        <p class="card-text"><strong>Check In:</strong> {{ $report->check_in ? $report->check_in->format('M d, Y - h:i A') : '' }}</p>
+						<p class="card-text"><strong>Check In:</strong> {{ $report->check_out ? $report->check_out->format('M d, Y - h:i A') : '' }}</p>
                         <div class="d-flex justify-content-between mt-2">
                             <a href="{{ route('stores.reports.show', [$store, $report]) }}" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i> View</a>
                             <a href="{{ route('stores.reports.edit', [$store, $report]) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>

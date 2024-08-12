@@ -50,28 +50,22 @@
 
         <hr class="border">
 
-        <h2 class="mt-4">Last 9 Reports</h2>
-
+        <h2 class="mt-4">Last 3 Reports</h2>
+			
         <div class="row">
-            @foreach ($store->reports()->latest()->take(9)->get() as $report)
+            @foreach ($store->reports()->latest()->take(3)->get() as $report)
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-header card-background-dark text-black">
-                            <h5 class="mb-0">{{ $report->name }}</h5>
-                        </div>
+						<div class="card">
+							<div class="card-header card-background-dark text-black">
+							<h5 class="mb-0">{{ $report->created_at->format('M/d/Y h:i A') }}</h5>
+						</div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <p class="card-text"><strong>Status:</strong> {{ ucfirst($report->status) }}</p>
-                                    <p class="card-text"><strong>SKU/UPS:</strong> {{ $report->sku }}</p>
-                                    <p class="card-text"><strong>Shelf Position:</strong> {{ $report->shelf_position }}</p>
-                                    <p class="card-text"><strong>Facing:</strong> {{ $report->facing }}</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-text"><strong>Stock Level:</strong> {{ $report->stock_level }}</p>
-                                    <p class="card-text"><strong>Out of Stock:</strong> {{ $report->out_of_stock ? 'Yes' : 'No' }}</p>
-                                    <p class="card-text"><strong>Price Accuracy:</strong> {{ $report->price_accuracy ? 'Yes' : 'No' }}</p>
-                                    <p class="card-text"><strong>By:</strong> {{ $report->user->name }}</p>
+                                <div class="col-md-12">
+                                   <p class="card-text"><strong>Status:</strong> {{ ucfirst($report->status) }}</p>
+									<p class="card-text"><strong>Merchandiser:</strong> {{ $report->user->name }}</p>
+									<p class="card-text"><strong>Check In:</strong> {{ $report->check_in ? $report->check_in->format('M d, Y - h:i A') : '' }}</p>
+									<p class="card-text"><strong>Check In:</strong> {{ $report->check_out ? $report->check_out->format('M d, Y - h:i A') : '' }}</p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between mt-2">
@@ -91,33 +85,6 @@
         <a href="{{ route('stores.index') }}" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left"></i> Back to Stores</a>
 
 		<hr class="border">
-
-        <?php /*
-		<h2>Reports</h2>
-        <div class="col-md-4 mb-4">
-            <div class="card card-outline-red">
-                <div class="card-body">
-                    <h5 class="card-title text-white"></h5>
-                    <p class="card-text text-white">
-                        <strong>Date Completed:</strong> <br>
-                        <strong>Start Time:</strong> <br>
-                        <strong>End Time:</strong> <br>
-                        <strong>Total Time</strong> <br>
-                        <strong>Completed by:</strong>
-                    </p>
-                    <div class="d-flex justify-content-between">
-                        <a href="{{ route('stores.reports.index', $store) }}" class="btn btn-primary btn-sm"><i class="bi bi-list"></i> View Reports</a>
-                        <a href="" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
-                        <form action="" method="POST" class="d-inline mt-2">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure you want to delete this report?')"><i class="bi bi-x-circle"></i> Delete</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-		*/ ?>
 		
     </div>
 @endsection
