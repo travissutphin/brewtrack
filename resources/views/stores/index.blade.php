@@ -26,6 +26,7 @@
 					<div class="card card-outline-red">
 						<div class="card-body">
 							<h5 class="card-title text-white">{{ $store->store_name }}</h5>
+							<p class="card-text text-white">Average Report Time: {{ $store->averageReportTime ?? 'N/A' }}</p>
 							<p class="card-text text-white">
 								<strong>Address:</strong> {{ $store->store_address }}<br>
 								<strong>City:</strong> {{ $store->store_city }}<br>

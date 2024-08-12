@@ -39,11 +39,13 @@
 
             <div class="col-md-6 mb-6">
                 <div class="card card-outline-red">
-                    <div class="card-body text-white">
-                        <h5 class="card-title text-white">Average Time Last Week: </h5>
-                        <h5 class="card-title text-white">Average Time Last Month: </h5>
-                        <h5 class="card-title text-white">Average Time Lifetime: </h5>
-                    </div>
+                    <div class="card-header"><h2 class="text-white">Store Statistics<h3></div>
+					<div class="card-body">
+						<h5 class="text-white">Average Report Times</h3>
+						<p class="text-white">Lifetime: <strong>{{ $lifetimeAverage }}</strong></p>
+						<p class="text-white">Last Week: <strong>{{ $lastWeekAverage }}</strong></p>
+						<p class="text-white">Last Month: <strong>{{ $lastMonthAverage }}</strong></p>
+					</div>
                 </div>
             </div>
         </div>

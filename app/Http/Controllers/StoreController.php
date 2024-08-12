@@ -16,7 +16,10 @@ class StoreController extends Controller
     
 	public function index()
     {
-        $stores = Store::all();
+        $stores = Store::all()->map(function ($store) {
+        $store->averageReportTime = $store->calculateAverageReportTime();
+        return $store;
+		});
         return view('stores.index', compact('stores'));
     }
 
@@ -42,11 +45,17 @@ class StoreController extends Controller
         return redirect()->route('stores.index')->with('success', 'Store created successfully.');
     }
 
-    public function show(Store $store)
-    {
+	public function show(Store $store)
+	{
 		$store->load('reports');
-        return view('stores.show', compact('store'));
-    }
+		
+		$lifetimeAverage = $store->calculateAverageReportTime();
+		$lastWeekAverage = $store->calculateAverageForPeriod(7);
+		$lastMonthAverage = $store->calculateAverageForPeriod(30);
+
+		return view('stores.show', compact('store', 'lifetimeAverage', 'lastWeekAverage', 'lastMonthAverage'));
+	}
+
 
     public function edit(Store $store)
     {
