@@ -5,7 +5,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card bg-dark text-white">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     <p>Welcome, {{ Auth::user()->name }}!</p>
@@ -42,19 +41,10 @@
 								</div>
 								<div class="col-md-3 mb-3">
 								  <div class="card text-white card-background-light">
-									<div class="card-header card-background-dark">Products</div>
+									<div class="card-header card-background-dark"><h5>Issue Tracking</h5></div>
 									<div class="card-body">
-									  <h5 class="card-title">Danger card title</h5>
-									  <p class="card-text">SKU/UPS : Name : Shelf Position : Facing : Stock Level : Out of Stock : Price Accuracy</p>
-									</div>
-								  </div>
-								</div>
-								<div class="col-md-3 mb-3">
-								  <div class="card text-white card-background-light">
-									<div class="card-header card-background-dark">Issur Tracking</div>
-									<div class="card-body">
-									  <h5 class="card-title">Danger card title</h5>
-									  <p class="card-text">Issue Found : Photo</p>
+										<p class="card-text"></p>
+										<a href="" class="btn btn-dark">View Issues</a>
 									</div>
 								  </div>
 								</div>

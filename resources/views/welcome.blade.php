@@ -17,32 +17,62 @@
 $todos = [
     [
         'id' => 1,
-        'headline' => 'User profile',
+        'headline' => 'User Profile',
         'details' => 'Show User uploaded profile pic',
         'completed' => false,
     ],
     [
         'id' => 2,
-        'headline' => 'View User',
-        'details' => 'see all stores the user has created reports for',
+        'headline' => 'User Profile',
+        'details' => 'view all reports created by user',
         'completed' => false,
     ],
     [
         'id' => 3,
+        'headline' => 'User Profile',
+        'details' => 'integrate soft delete',
+        'completed' => false,
+    ],
+	[
+        'id' => 4,
         'headline' => 'Store Reports CRUD',
         'details' => 'implement finalized report details to be colletec at each store',
         'completed' => false,
     ],
     [
-        'id' => 4,
-        'headline' => 'Store Report - feature',
-        'details' => 'integrate checkin - checkout times for user',
-        'completed' => false,
-    ],
-    [
         'id' => 5,
         'headline' => 'Store Report - feature',
-        'details' => 'calculate times for store visits',
+        'details' => 'integrate checkin - checkout times for user',
+        'completed' => true,
+    ],
+    [
+        'id' => 6,
+        'headline' => 'Store Report - feature',
+        'details' => 'bug - avg time calculations wrong',
+        'completed' => false,
+    ],
+	[
+        'id' => 7,
+        'headline' => 'Reports',
+        'details' => 'format show with proper styling',
+        'completed' => false,
+    ],
+	[
+        'id' => 8,
+        'headline' => 'Reports',
+        'details' => 'integrate soft delete',
+        'completed' => false,
+    ],
+	[
+        'id' => 9,
+        'headline' => 'Reports',
+        'details' => 'Check as urgent issue',
+        'completed' => false,
+    ],
+	[
+        'id' => 10,
+        'headline' => 'Dashboard',
+        'details' => 'View all Reports marked as issues',
         'completed' => false,
     ],
 ];
